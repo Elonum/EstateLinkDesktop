@@ -1,0 +1,139 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="baseButtonStyle" TargetType="Button">
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="MinWidth" Value="80"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="FontFamily" Value="{StaticResource RobotoFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Margin="{TemplateBinding Margin}"
+                            CornerRadius="3">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="primaryButtonCommon" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource blue_1}"/>
+        <Setter Property="Foreground" Value="{StaticResource gray_0}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource blue_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource blue_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="primaryButtonBig" TargetType="Button" BasedOn="{StaticResource primaryButtonCommon}">
+        <Setter Property="Height" Value="48"/>
+    </Style>
+
+    <Style x:Key="primaryButtonSmall" TargetType="Button" BasedOn="{StaticResource primaryButtonCommon}">
+        <Setter Property="Height" Value="24"/>
+    </Style>
+
+    <Style x:Key="statusButtonSuccess" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource green_1}"/>
+        <Setter Property="Foreground" Value="{StaticResource gray_0}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource green_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource green_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="statusButtonWarning" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource orange_1}"/>
+        <Setter Property="Foreground" Value="{StaticResource gray_0}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource orange_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource orange_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="statusButtonDanger" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource red_1}"/>
+        <Setter Property="Foreground" Value="{StaticResource gray_0}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource red_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource red_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="normalButtonCommon" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource gray_1}"/>
+        <Setter Property="Foreground" Value="{StaticResource gray_6}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource gray_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource gray_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="normalButtonBig" TargetType="Button" BasedOn="{StaticResource normalButtonCommon}">
+        <Setter Property="Height" Value="48"/>
+    </Style>
+
+    <Style x:Key="normalButtonSmall" TargetType="Button" BasedOn="{StaticResource normalButtonCommon}">
+        <Setter Property="Height" Value="24"/>
+    </Style>
+
+    <Style x:Key="outlineButtonCommon" TargetType="Button" BasedOn="{StaticResource baseButtonStyle}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource blue_1}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource blue_1}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="BorderBrush" Value="{StaticResource blue_0}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_3}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource blue_2}"/>
+                <Setter Property="Foreground" Value="{StaticResource gray_0}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource blue_2}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="outlineButtonBig" TargetType="Button" BasedOn="{StaticResource outlineButtonCommon}">
+        <Setter Property="Height" Value="48"/>
+    </Style>
+
+    <Style x:Key="outlineButtonSmall" TargetType="Button" BasedOn="{StaticResource outlineButtonCommon}">
+        <Setter Property="Height" Value="24"/>
+    </Style>
+
+</ResourceDictionary> 

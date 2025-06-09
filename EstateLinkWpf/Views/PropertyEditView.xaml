@@ -1,0 +1,263 @@
+﻿<Window x:Class="EstateLinkWpf.Views.PropertyEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EstateLinkWpf.Views"
+        mc:Ignorable="d"
+        Title="Редактирование объекта недвижимости" Height="700" Width="600" 
+        Icon="pack://application:,,,/EstateLinkWpf;component/Assets/icon.ico"
+        Background="{StaticResource gray_0}">
+    <Grid Margin="20">
+        <Grid.Resources>
+            <Style x:Key="numericInputStyle" BasedOn="{StaticResource baseInputStyle}" TargetType="TextBox">
+                <Setter Property="Validation.ErrorTemplate">
+                    <Setter.Value>
+                        <ControlTemplate/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="Header" Text="Редактирование объекта недвижимости"
+                  Grid.Row="0"
+                  Style="{StaticResource H1}"
+                  Margin="0,0,0,20"/>
+
+        <Grid Grid.Row="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="0,0,0,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Тип:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <ComboBox x:Name="PropertyTypeComboBox"
+                                    DisplayMemberPath="TypeName"
+                                    SelectedValuePath="PropertyTypeID"
+                                    SelectedValue="{Binding PropertyTypeID, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource baseComboBoxStyle}"
+                                    IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.IsNew}"/>
+                            <TextBlock x:Name="PropertyTypeError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Город:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="CityTextBox"
+                                    Text="{Binding City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource baseInputStyle}"
+                                    Tag="Введите город"/>
+                            <TextBlock x:Name="CityError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Улица:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="StreetTextBox"
+                                    Text="{Binding Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource baseInputStyle}"
+                                    Tag="Введите улицу"/>
+                            <TextBlock x:Name="StreetError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Дом:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="HouseTextBox"
+                                    Text="{Binding House, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource baseInputStyle}"
+                                    Tag="Введите номер дома"/>
+                            <TextBlock x:Name="HouseError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Visibility="{Binding ShowApartment, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Квартира:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="ApartmentTextBox"
+                                    Text="{Binding Apartment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Style="{StaticResource baseInputStyle}"
+                                    Tag="Введите номер квартиры"/>
+                            <TextBlock x:Name="ApartmentError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Широта:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="LatitudeTextBox"
+                                    Text="{Binding Latitude, ValidatesOnExceptions=False}"
+                                    Style="{StaticResource numericInputStyle}"
+                                    Tag="Введите широту (-90 до 90)"/>
+                            <TextBlock x:Name="LatitudeError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Долгота:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="LongitudeTextBox"
+                                    Text="{Binding Longitude, ValidatesOnExceptions=False}"
+                                    Style="{StaticResource numericInputStyle}"
+                                    Tag="Введите долготу (-180 до 180)"/>
+                            <TextBlock x:Name="LongitudeError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Visibility="{Binding ShowFloor, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Этаж:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="FloorTextBox"
+                                    Text="{Binding Floor, ValidatesOnExceptions=False}"
+                                    Style="{StaticResource numericInputStyle}"
+                                    Tag="Введите этаж"/>
+                            <TextBlock x:Name="FloorError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Visibility="{Binding ShowRoomCount, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Комнат:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="RoomCountTextBox"
+                                    Text="{Binding RoomCount, ValidatesOnExceptions=False}"
+                                    Style="{StaticResource numericInputStyle}"
+                                    Tag="Введите количество комнат"/>
+                            <TextBlock x:Name="RoomCountError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Площадь:" Grid.Column="0"
+                                Style="{StaticResource H3}"
+                                VerticalAlignment="Top"
+                                Margin="0,5,15,0"/>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,20">
+                            <TextBox x:Name="AreaTextBox"
+                                    Text="{Binding Area, ValidatesOnExceptions=False}"
+                                    Style="{StaticResource numericInputStyle}"
+                                    Tag="Введите площадь"/>
+                            <TextBlock x:Name="AreaError"
+                                    Style="{StaticResource errorTextStyle}"
+                                    Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right">
+            <Button Style="{StaticResource primaryButtonCommon}"
+                    x:Name="SaveButton"
+                    Content="Сохранить"
+                    Click="OnSaveClick"
+                    Margin="0,0,15,0"/>
+            <Button Style="{StaticResource outlineButtonCommon}"
+                    Content="Отмена"
+                    Click="OnCancelClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,65 @@
+﻿<Window x:Class="EstateLinkWpf.Views.OfferView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EstateLinkWpf.Views"
+        mc:Ignorable="d"
+        Title="Предложения" Height="600" Width="1000"
+        Icon="pack://application:,,,/EstateLinkWpf;component/Assets/icon.ico"
+        Background="{StaticResource gray_0}">
+    <DockPanel Margin="20">
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
+            <TextBlock Text="Предложения"
+                      Foreground="{StaticResource gray_6}"
+                      FontFamily="{StaticResource RobotoFont}"
+                      FontSize="24" FontWeight="Medium"
+                      Margin="0,0,0,20"/>
+
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,20" LastChildFill="False">
+                <Button Style="{StaticResource primaryButtonCommon}"
+                        Content="Добавить"
+                        Click="OnAddClick"
+                        Margin="0,0,15,0"/>
+                <Button Style="{StaticResource outlineButtonCommon}"
+                        Content="Редактировать"
+                        Click="OnEditClick"
+                        Margin="0,0,15,0"/>
+                <Button Style="{StaticResource statusButtonDanger}"
+                        Content="Удалить"
+                        Click="OnDeleteClick"
+                        Margin="0,0,15,0"/>
+                <Button DockPanel.Dock="Right"
+                        Style="{StaticResource outlineButtonCommon}"
+                        Content="← Назад"
+                        Click="OnCloseClick"/>
+            </DockPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="OffersGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Style="{StaticResource DefaultDataGridStyle}"
+                  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                  CellStyle="{StaticResource DataGridCellStyle}"
+                  RowStyle="{StaticResource DataGridRowStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Риэлтор" 
+                                  Binding="{Binding Realtor.LastName}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Клиент" 
+                                  Binding="{Binding Client.LastName}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Тип" 
+                                  Binding="{Binding Property.PropertyType.TypeName}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Адрес" 
+                                  Binding="{Binding Property}" 
+                                  Width="2*"/>
+                <DataGridTextColumn Header="Цена" 
+                                  Binding="{Binding Price, StringFormat={}{0:N2} ₽}" 
+                                  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>
