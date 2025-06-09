@@ -223,9 +223,6 @@
   <ItemGroup>
     <Resource Include="Assets\icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="SQL\InitialData.sql" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -3,20 +3,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
-namespace EstateLinkWpf.Models
+namespace EstateLinkAvalonia.Models
 {
     [Table("Offer")]
     public class Offer : INotifyPropertyChanged
     {
-        private Client _client;
-        private Realtor _realtor;
-        private Property _property;
+        private Client? _client;
+        private Realtor? _realtor;
+        private Property? _property;
         private int _price;
         private bool _isNew;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -30,7 +30,7 @@ namespace EstateLinkWpf.Models
         public int ClientID { get; set; }
 
         [ForeignKey("ClientID")]
-        public Client Client
+        public Client? Client
         {
             get => _client;
             set
@@ -48,7 +48,7 @@ namespace EstateLinkWpf.Models
         public int RealtorID { get; set; }
 
         [ForeignKey("RealtorID")]
-        public Realtor Realtor
+        public Realtor? Realtor
         {
             get => _realtor;
             set
@@ -66,7 +66,7 @@ namespace EstateLinkWpf.Models
         public int PropertyID { get; set; }
 
         [ForeignKey("PropertyID")]
-        public Property Property
+        public Property? Property
         {
             get => _property;
             set

@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using EstateLinkAvalonia.Data;
 
 namespace EstateLinkAvalonia
 {
@@ -9,6 +10,7 @@ namespace EstateLinkAvalonia
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+            DatabaseService.Initialize();
         }
 
         public override void OnFrameworkInitializationCompleted()

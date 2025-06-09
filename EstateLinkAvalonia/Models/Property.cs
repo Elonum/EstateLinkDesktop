@@ -8,16 +8,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EstateLinkWpf.Models
+namespace EstateLinkAvalonia.Models
 {
     [Table("Property")]
     public class Property : INotifyPropertyChanged
     {
-        private PropertyType _propertyType;
-        private string _city;
-        private string _street;
-        private string _house;
-        private string _apartment;
+        private PropertyType? _propertyType;
+        private string? _city;
+        private string? _street;
+        private string? _house;
+        private string? _apartment;
         private double? _latitude;
         private double? _longitude;
         private int? _floor;
@@ -25,9 +25,9 @@ namespace EstateLinkWpf.Models
         private double? _area;
         private bool _isNew;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -51,7 +51,7 @@ namespace EstateLinkWpf.Models
         public int PropertyID { get; set; }
 
         [Column("City")]
-        public string City 
+        public string? City 
         { 
             get => _city;
             set
@@ -65,7 +65,7 @@ namespace EstateLinkWpf.Models
         }
 
         [Column("Street")]
-        public string Street 
+        public string? Street 
         { 
             get => _street;
             set
@@ -79,7 +79,7 @@ namespace EstateLinkWpf.Models
         }
 
         [Column("House")]
-        public string House 
+        public string? House 
         { 
             get => _house;
             set
@@ -93,7 +93,7 @@ namespace EstateLinkWpf.Models
         }
 
         [Column("Apartment")]
-        public string Apartment 
+        public string? Apartment 
         { 
             get => _apartment;
             set
@@ -180,7 +180,7 @@ namespace EstateLinkWpf.Models
         public int PropertyTypeID { get; set; }
 
         [ForeignKey("PropertyTypeID")]
-        public PropertyType PropertyType 
+        public PropertyType? PropertyType 
         { 
             get => _propertyType;
             set
@@ -234,7 +234,7 @@ namespace EstateLinkWpf.Models
 
         [Required]
         [Column("TypeName")]
-        public string TypeName { get; set; }
+        public string TypeName { get; set; } = string.Empty;
 
         public ICollection<Property> Properties { get; set; } = new List<Property>();
 

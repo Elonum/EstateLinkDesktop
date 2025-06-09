@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
-namespace EstateLinkWpf.Models
+namespace EstateLinkAvalonia.Models
 {
     public class ApartmentNeed : INotifyPropertyChanged
     {
@@ -11,11 +11,11 @@ namespace EstateLinkWpf.Models
         private int _maxRoomCount;
         private int _minFloor;
         private int _maxFloor;
-        private Need _need;
+        private Need? _need;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -76,7 +76,7 @@ namespace EstateLinkWpf.Models
             }
         }
 
-        public virtual Need Need
+        public virtual Need? Need
         {
             get => _need;
             set
